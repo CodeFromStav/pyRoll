@@ -1,15 +1,5 @@
 import random
 
-#main function
-
-
-#random.randrange(start,stop[,step])
-#random.randrange(stop)
-
-
-
-
-
 #Create a training dummy with Health & Armor
 #Have a dice roll determine the damage you do
 #self is used to rep the instance of the class
@@ -28,38 +18,41 @@ class Hero:
         self.health = health
         self.armor = armor
 
-    def meleeAttack(self, other):
+    def meleeAttack(self, enemy):
         attack = 10
-        melee = random.randint(1,2)
+        melee = round(random.uniform(1,2), 1)
         attackTotal = attack * melee
 
-        other.health -= attackTotal
-        print("melee rolled: "+ str(melee))
+        enemy.health -= attackTotal
+        print("melee rolled: " + str(melee))
         print("final blow = " + str(attackTotal))
 
 
 dummyOne = Dummy(100, 10)
 heroOne = Hero(100, 10)
 
-# heroOne.meleeAttack(other)
+# #test
+roundCount = 0
 
 while dummyOne.health > 0:
     heroOne.meleeAttack(dummyOne)
-    print(dummyOne.health)
+    roundCount += 1
+    print("Dummy Health: " + str(dummyOne.health) + "\n")
+
+print("Dummy Down!")
+print("Round Count: " + str(roundCount))
 
 overKill = dummyOne.health
-print(overKill)
+print("Overkill value: " + str(overKill))
 
+# dummyOne.displayStats()
 
 
 # levelBeg = Dummy(50, 10)
 # levelInter = Dummy(100, 15)
 # levelAdv = Dummy(200, 20)
-
 # heroOne = Hero(150, 20)
-
 # heroOne.meleeAttack()
-
 # levelAdv.displayStats()
 
 
