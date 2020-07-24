@@ -17,11 +17,6 @@ class Dummy:
     def __init__(self, health, armor):
         self.health = health
         self.armor = armor
-
-    # def meleeAttack():
-
-
-    #def magicAttack():
         
     def displayStats(self):
         print("Health:" + str(self.health))
@@ -33,22 +28,38 @@ class Hero:
         self.health = health
         self.armor = armor
 
-    def meleeAttack(self):
+    def meleeAttack(self, other):
         attack = 10
         melee = random.randint(1,2)
-        attack = attack * melee
+        attackTotal = attack * melee
+
+        other.health -= attackTotal
         print("melee rolled: "+ str(melee))
-        print("final blow = " + str(attack))
+        print("final blow = " + str(attackTotal))
 
 
-levelBeg = Dummy(50, 10)
-levelInter = Dummy(100, 15)
-levelAdv = Dummy(200, 20)
+dummyOne = Dummy(100, 10)
+heroOne = Hero(100, 10)
 
-heroOne = Hero(150, 20)
+# heroOne.meleeAttack(other)
 
-heroOne.meleeAttack()
+while dummyOne.health > 0:
+    heroOne.meleeAttack(dummyOne)
+    print(dummyOne.health)
 
-levelAdv.displayStats()
+overKill = dummyOne.health
+print(overKill)
+
+
+
+# levelBeg = Dummy(50, 10)
+# levelInter = Dummy(100, 15)
+# levelAdv = Dummy(200, 20)
+
+# heroOne = Hero(150, 20)
+
+# heroOne.meleeAttack()
+
+# levelAdv.displayStats()
 
 
